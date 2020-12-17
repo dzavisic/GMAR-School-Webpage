@@ -1,0 +1,261 @@
+<body>
+    <div class="d-flex" id="wrapper">
+  
+      <!-- Sidebar -->
+      <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading bg-dark text-white">GMAR | IZBORNIK</div>
+        <div class="list-group list-group-flush">
+          <a href="panel" class="list-group-item list-group-item-action bg-light">Početna</a>
+          <a href="panel/nastavnik" class="list-group-item list-group-item-action bg-secondary text-white">Nastavnici</a>
+          <a href="panel/ucenik" class="list-group-item list-group-item-action bg-light">Učenici</a>
+          <a href="panel/uloga" class="list-group-item list-group-item-action bg-light">Uloge</a>
+          <a href="panel/program" class="list-group-item list-group-item-action bg-light">Program</a>
+          <a href="panel/razred" class="list-group-item list-group-item-action bg-light">Razredi</a>
+          <a href="panel/predmet" class="list-group-item list-group-item-action bg-light">Predmeti</a>
+          <a id="obavijesti" href="panel/obavijest" class="list-group-item list-group-item-action bg-light">Obavijesti</a>
+          <a id="carnet" href="panel/carnet" class="list-group-item list-group-item-action bg-light">Carnet</a>
+          <a href="prijava" (click)="odjava()" class="list-group-item list-group-item-action bg-info text-white">Odjavi se</a>
+        </div>
+      </div>
+      <!-- /#sidebar-wrapper -->
+  
+      <!-- Page Content -->     
+      <div id="page-content-wrapper" >
+        <div class="bg-light">
+          
+            <h3 class="d-flex justify-content-center mt-2">Nastavnici</h3>
+            <div class="d-flex justify-content-around m-3">
+              <div class="d-flex justify-content-around">
+                <!-- TRAZENJE NASTAVNIKA -->
+                <input type="text" [(ngModel)]="unos" placeholder="Pretraga.." id="">
+                <button (click)="pretraziNastavnika()" type="button" class="btn btn-secondary" >Pretraži</button>
+              </div>
+              
+              <!-- DODAVANJE NASTAVNIKA -->
+              <button id="addnast" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+                Dodaj nastavnika
+              </button>
+              
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Dodaj nastavnika</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="container">
+                        <div class = "row pb-1">
+                          <h6 class="col text-secondary">Molimo ispunite polja</h6>
+                        </div>
+                        <div class="row">
+                          <label for="" class="col">
+                            Matični broj: 
+                            <input type="text" [(ngModel)] = "mat_br" placeholder="mat_br">
+                          </label>
+                        </div>
+                        <div class="row">
+                          <label for="" class="col">
+                            Ime: 
+                            <input type="text" [(ngModel)] = "ime" placeholder="ime">
+                          </label>
+                          <label for="" class="col">
+                            Prezime: 
+                            <input type="text" [(ngModel)] = "prezime" placeholder="prezime">
+                          </label>
+                        </div>
+                        <div class="row">
+                          <label for="" class="col">
+                            Datum rođenja: 
+                            <input type="text" [(ngModel)] = "dob" placeholder="dob">
+                          </label>
+                          <label for="" class="col">
+                            Titula: 
+                            <input type="text" [(ngModel)] = "titula" placeholder="titula">
+                          </label>
+                        </div>
+                        <div class="row">
+                          <label for="" class="col">
+                            Telefon:  
+                            <input type="text" [(ngModel)] = "tel" placeholder="tel">
+                          </label>
+                          <label for="" class="col">
+                            Broj kabineta: 
+                            <input type="text" [(ngModel)] = "kabinet_broj" placeholder="kabinet_broj">
+                          </label>
+                        </div>
+                        <div class="row">
+                          <label for="" class="col">
+                            Kat kabineta: 
+                            <input type="text" [(ngModel)] = "kabinet_kat" placeholder="kabinet_kat">
+                          </label>
+                          <label for="" class="col">
+                            Email: 
+                            <input type="text" [(ngModel)] = "email" placeholder="email">
+                          </label>
+                        </div>
+                        <div class="row">
+                          <label for="" class="col">
+                            Password: 
+                            <input type="text" [(ngModel)] = "password" placeholder="password">
+                          </label>
+                          <label for="" class="col">
+                            Panelrole: 
+                            <input type="text" [(ngModel)] = "panelrole" placeholder="panelrole">
+                          </label>
+                        </div>
+                        
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+                      <button type="button" class="btn btn-primary" (click)="dodajNastavnika()" data-dismiss="modal">Spremi</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- AŽURIRAJ NASTAVNIKA -->
+              <button id="updnast" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal2">
+                Ažuriraj podatke
+              </button>
+              
+              <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Ažuriraj podatke</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="container">
+                        <div class = "row pb-1">
+                          <h6 class="col text-secondary">Molimo ispunite polja</h6>
+                        </div>
+                        <div class="row">
+                          <label for="" class="col">
+                            Matični broj: 
+                            <input type="text" [(ngModel)] = "mat_br" placeholder="mat_br">
+                          </label>
+                        </div>
+                        <div class="row">
+                          <label for="" class="col">
+                            Ime: 
+                            <input type="text" [(ngModel)] = "ime" placeholder="ime">
+                          </label>
+                          <label for="" class="col">
+                            Prezime: 
+                            <input type="text" [(ngModel)] = "prezime" placeholder="prezime">
+                          </label>
+                        </div>
+                        <div class="row">
+                          <label for="" class="col">
+                            Datum rođenja: 
+                            <input type="text" [(ngModel)] = "dob" placeholder="dob">
+                          </label>
+                          <label for="" class="col">
+                            Titula: 
+                            <input type="text" [(ngModel)] = "titula" placeholder="titula">
+                          </label>
+                        </div>
+                        <div class="row">
+                          <label for="" class="col">
+                            Telefon:  
+                            <input type="text" [(ngModel)] = "tel" placeholder="tel">
+                          </label>
+                          <label for="" class="col">
+                            Broj kabineta: 
+                            <input type="text" [(ngModel)] = "kabinet_broj" placeholder="kabinet_broj">
+                          </label>
+                        </div>
+                        <div class="row">
+                          <label for="" class="col">
+                            Kat kabineta: 
+                            <input type="text" [(ngModel)] = "kabinet_kat" placeholder="kabinet_kat">
+                          </label>
+                          <label for="" class="col">
+                            Email: 
+                            <input type="text" [(ngModel)] = "email" placeholder="email">
+                          </label>
+                        </div>
+                        <div class="row">
+                          <label for="" class="col">
+                            Password: 
+                            <input type="text" [(ngModel)] = "password" placeholder="password">
+                          </label>
+                          <label for="" class="col">
+                            Panelrole: 
+                            <input type="text" [(ngModel)] = "panelrole" placeholder="panelrole">
+                          </label>
+                        </div>
+                        
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+                      <button type="button" class="btn btn-primary" (click)="azurirajNastavnika()" data-dismiss="modal">Ažuriraj</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- BRISANJE NASTAVNIKA -->
+              <button id="delnast" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal1">
+                Obriši nastavnika
+              </button>
+              
+              <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Obriši nastavnika</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                      <div class="modal-body">
+                        <div class="container">
+                          <div class = "row pb-1">
+                            <h6 class="col text-secondary">Molimo ispunite polja</h6>
+                          </div>
+                          <div class="row">
+                            <label for="" class="col">
+                              Matični broj: 
+                              <input type="text" [(ngModel)] = "mat_br" placeholder="mat_br">
+                            </label>
+                          </div>
+                          <div class="row">
+                            <label for="" class="col">
+                              Ime: 
+                              <input type="text" [(ngModel)] = "ime" placeholder="ime">
+                            </label>
+                            <label for="" class="col">
+                              Prezime: 
+                              <input type="text" [(ngModel)] = "prezime" placeholder="prezime">
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+                      <button type="button" class="btn btn-primary" (click)="obrisiNastavnika()" data-dismiss="modal">Obriši</button>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              <button (click)="pretrazisveNastavnike()" type="button" class="btn btn-secondary">Prikaži sve</button>
+            </div>
+
+            <!-- pocetna.js INSERTA TABLICU U OVAJ DIV -->
+            <div id="showData" class="table-responsive">
+              
+            </div>
+        </div>
+      </div>
+      <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+  </body>
+

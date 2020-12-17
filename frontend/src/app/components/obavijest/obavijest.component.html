@@ -1,0 +1,83 @@
+<body class="pt-0">
+    <div class="d-flex" id="wrapper">
+      
+      <!-- SIDEBAR -->
+      <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading bg-dark text-white">GMAR | IZBORNIK</div>
+        <div class="list-group list-group-flush">
+          <a href="panel" class="list-group-item list-group-item-action bg-light">Početna</a>
+          <a href="panel/nastavnik" class="list-group-item list-group-item-action bg-light">Nastavnici</a>
+          <a href="panel/ucenik" class="list-group-item list-group-item-action bg-light">Učenici</a>
+          <a href="panel/uloga" class="list-group-item list-group-item-action bg-light">Uloge</a>
+          <a href="panel/program" class="list-group-item list-group-item-action bg-light">Program</a>
+          <a href="panel/razred" class="list-group-item list-group-item-action bg-light">Razredi</a>
+          <a href="panel/predmet" class="list-group-item list-group-item-action bg-light">Predmeti</a>
+          <a id="obavijesti" href="panel/obavijest" class="list-group-item list-group-item-action bg-secondary text-white">Obavijesti</a>
+          <a id="carnet" href="panel/carnet" class="list-group-item list-group-item-action bg-light">Carnet</a>
+          <a href="prijava" (click)="odjava()" class="list-group-item list-group-item-action bg-info text-white">Odjavi se</a>
+        </div>
+      </div>
+      
+  
+      <!-- OBJAVA OBAVJESTI -->
+      <div id="page-content-wrapper" class="bg-light">
+        <div class="container" style="margin-left: 50px;">
+            <h3 class="mt-4 border border-dark rounded" style="margin-right: 20% !important; border-width: 4px !important;"><div class="m-2">Postavite novu obavijest</div></h3>
+            <div class="border border-secondary rounded" style="margin-right: 20% !important; border-width: 4px !important;">
+                <div class="m-4">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="">Unesite url slike za objavu:</label>
+                        </div>
+                        <div class="col">
+                            <input style="width: 423px !important;" type="text" [(ngModel)]="srcImg" placeholder="Unesi url slike..">
+                        </div>
+                    </div>
+                    <div class="row pt-1">
+                        <div class="col-4">
+                            <label for="">Unesite naslov objave:</label>
+                        </div>
+                        <div class="col">
+                            <input style="width: 423px !important;" type="text" [(ngModel)]="naslov" placeholder="Unesi naslov..">
+                        </div>
+                    </div>
+                    <div class="row pt-1">
+                        <div class="col-4">
+                            <label for="">Unesite datum objave:</label>
+                        </div>
+                        <div class="col">
+                            <input style="width: 423px !important;" type="text" [(ngModel)]="datum" placeholder="Unesi datum..">
+                        </div>
+                    </div>
+                    <div class="row pt-1">
+                        <div class="col-4">
+                            <label for="">Unesite autora objave:</label>
+                        </div>
+                        <div class="col">
+                            <input style="width: 423px !important;" type="text" [(ngModel)]="autor" placeholder="Unesi autora..">
+                        </div>
+                    </div>
+                    <div class="row pt-1">
+                        <div class="col-4">
+                            <label for="">Unesite sadržaj objave:</label>
+                        </div>
+                        <div class="col">
+                            <textarea  name="sadrzaj" id="sadrzaj" [(ngModel)]="sadrzaj" cols="50" rows="15" placeholder="Unesite tekst.."></textarea>
+                        </div>
+                    </div>  
+                    <div class="row pt-1">
+                        <div class="col">
+                            <button class="btn btn-secondary" style="margin-left: 75% !important;" type="submit" (click)="objavi()">Objavi</button>
+                        </div>
+                    </div>           
+                </div>
+            </div>
+        </div>
+      </div>
+     
+  
+    </div>
+  
+    <script src="../../../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
